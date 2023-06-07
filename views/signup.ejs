@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="signup">
+      <h3>회원가입</h3>
+      <label for="email">이메일:</label>
+      <input
+        type="text"
+        id="email"
+        placeholder="이메일을 입력해주세요."
+      /><br />
+      <label for="name">이름:</label>
+      <input type="text" id="name" placeholder="이름을 입력해주세요." /><br />
+      <label for="nickname">닉네임:</label>
+      <input
+        type="text"
+        id="nickname"
+        placeholder="닉네임을 입력해주세요."
+      /><br />
+      <label for="userid">아이디:</label>
+      <input
+        type="text"
+        id="userid"
+        placeholder="아이디를 입력해주세요."
+      /><br />
+      <label for="pw">비밀번호:</label>
+      <input
+        type="text"
+        id="password"
+        placeholder="비밀번호를 입력해주세요."
+      /><br />
+      경력사항:
+      <input type="radio" id="newcomer" name="newcomer" value="1" />신입
+      <input type="radio" id="newcomer" name="newcomer" value="2" />경력
+      <input type="hidden" id="created_at" name="createdate" />
+      <input type="hidden" id="left_at" name="expiredate" />
+
+      <br /><br />
+      <tr>
+        <th><input type="checkbox" />전체동의</th>
+        <td>
+          <hr />
+          <div>
+            <input type="checkbox" /> 만 15세 미만입니다.
+            <span style="color: Red">필수</span>
+          </div>
+          <div>
+            <input type="checkbox" /> 개인회원 이용약관 동의
+            <span style="color: Red">필수</span>
+          </div>
+          <div>
+            <input type="checkbox" /> 개인정보 수진 및 이용 동의
+            <span style="color: Red">필수</span>
+          </div>
+          <div>
+            <input type="checkbox" /> 마케팅 동의 수신
+            <span style="color: Red">필수</span>
+          </div>
+          <br />
+          <button type="button" onclick="register()">회원가입</button>
+        </td>
+      </tr>
+    </form>
+    <script>
+      function register() {
+        const form = document.forms["signup"];
+        console.log(form.checkValidity());
+        // if (!form.checkValidity()) {
+        //   return;
+        // }
+        if (
+          form.email.value.length === 0 ||
+          form.name.value.length === 0 ||
+          form.nickname.value.length === 0 ||
+          form.password.value.length === 0 ||
+          form.newcomer.value.length === 0
+        ) {
+          alert("모든항목을 입력하세요.");
+          return;
+        }
+        axios({
+          method: "POST",
+          url: "/signup",
+          data: {
+            email: form.email.value,
+            username: form.name.value,
+            nickname: form.nickname.value,
+            password: form.password.value,
+            newcomer: form.newcomer.value,
+            created_at: form.created_at.value,
+            left_at: form.left_at.value,
+          },
+        }).then((res) => {
+          console.log(res.data);
+          if (res.data.result === true) {
+            alert("환영합니다.");
+            document.location.href = "/login";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
