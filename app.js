@@ -10,8 +10,6 @@ const { sequelize } = require("./src/models");
 const jwt = require("jsonwebtoken");
 const session = require("express-session");
 
-// TODO: 해당 부분 삭제
-// DB 동기화
 // sequelize 설정 - 동기화 진행
 sequelize
   .sync({ force: false }) //true면 서버 실행마다 테이블 재생성
@@ -41,7 +39,7 @@ async function initData() {
     }
     if (!category2) {
       await db.category.create({
-        category_name: "이직",
+        category_name: "커리어",
       });
     }
     if (!category3) {

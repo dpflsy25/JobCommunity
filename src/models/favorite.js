@@ -10,7 +10,7 @@ const Favorite = (Sequelize, DataTypes) => {
         comment: "id",
       },
       user_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         allowNull: false,
         comment: "사용자 id",
         references: {
