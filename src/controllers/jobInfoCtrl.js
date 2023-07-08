@@ -1,6 +1,8 @@
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
-const secretKey = "jomcommunity-key";
+const { compileString } = require("sass");
+const config = require(__dirname + "/../config/config.json");
+const secretKey = config.jwtKey;
 
 exports.getExternalData = async (req, res) => {
   try {

@@ -1,29 +1,7 @@
 {
-  "development": {
-    "username": "root",
-    "password": "dpfls123",
-    "database": "job-community",
-    "host": "svc.sel4.cloudtype.app",
-    "dialect": "mysql",
-    "port": "30925",
-    "timezone": "Asia/Seoul"
-  },
-  "test": {
-    "username": "root",
-    "password": "dpfls123",
-    "database": "job-community",
-    "host": "svc.sel4.cloudtype.app",
-    "dialect": "mysql",
-    "port": "30925",
-    "timezone": "Asia/Seoul"
-  },
-  "production": {
-    "username": "root",
-    "password": "dpfls123",
-    "database": "job-community",
-    "host": "svc.sel4.cloudtype.app",
-    "dialect": "mysql",
-    "port": "30925",
-    "timezone": "Asia/Seoul"
-  }
+    "jwtKey" : "job-community",
+    "mail" : {
+        "user": "",
+        "pass": ""
+    }
 }

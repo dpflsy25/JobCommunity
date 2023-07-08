@@ -1,5 +1,7 @@
 const jwt = require("jsonwebtoken");
 const model = require("../models");
+const config = require(__dirname + "/../config/config.json");
+const secretKey = config.jwtKey;
 
 module.exports = async (req, res, next) => {
   const { authorization } = req.cookies;
@@ -14,7 +16,7 @@ module.exports = async (req, res, next) => {
   try {
     // 1. authToken이 만료되었는지 확인
     // 2. authToken이 서버가 발급한 토큰이 맞는지 검증 (비밀키)
-    const { userId } = jwt.verify(authToken, "jobcommunity-key");
+    const { userId } = jwt.verify(authToken, secretKey);
 
     // 3. authToken에 있는 userId에 해당하는 사용자가 db에 있는지 확인
     const user = await model.user.findByPk(userId);

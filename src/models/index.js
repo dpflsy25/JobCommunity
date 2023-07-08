@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 const process = require("process");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
-const config = require(__dirname + "/../config/config.json")[env];
+const config = require(__dirname + "/../config/dbConfig.json")[env];
 const db = {};
 const Question = require("./question");
 const User = require("./user");
@@ -54,29 +54,17 @@ db.user.hasMany(db.question, { as: "questions", foreignKey: "user_id" });
 db.user.hasMany(db.answer, { as: "answers", foreignKey: "user_id" });
 db.user.hasMany(db.favorite, { as: "favorites", foreignKey: "user_id" });
 
-db.question.belongsTo(db.category, {
-  as: "category",
-  foreignKey: "category_id",
-});
+db.question.belongsTo(db.category, { as: "category", foreignKey: "category_id",});
 db.question.hasMany(db.answer, { as: "answers", foreignKey: "question_id" });
-db.question.hasMany(db.favorite, {
-  as: "favorites",
-  foreignKey: "question_id",
-});
+db.question.hasMany(db.favorite, { as: "favorites", foreignKey: "question_id",});
 db.question.belongsTo(db.user, { as: "user", foreignKey: "user_id" });
 
-db.category.hasMany(db.question, {
-  as: "questions",
-  foreignKey: "category_id",
-});
+db.category.hasMany(db.question, { as: "questions", foreignKey: "category_id",});
 
 db.answer.belongsTo(db.question, { as: "question", foreignKey: "question_id" });
 db.answer.belongsTo(db.user, { as: "user", foreignKey: "user_id" });
 
-db.favorite.belongsTo(db.question, {
-  as: "question",
-  foreignKey: "question_id",
-});
+db.favorite.belongsTo(db.question, { as: "question", foreignKey: "question_id",});
 db.favorite.belongsTo(db.user, { as: "user", foreignKey: "user_id" });
 
 Object.keys(db).forEach((modelName) => {

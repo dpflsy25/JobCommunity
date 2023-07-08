@@ -3,7 +3,8 @@ const { Op } = require("sequelize");
 const sequelize = db.sequelize;
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const secretKey = "jomcommunity-key";
+const config = require(__dirname + "/../config/config.json");
+const secretKey = config.jwtKey;
 
 // 질문 전체 조회하기
 // 질문 리스트 조회 (카테고리별, 조회순, 공감순, 최신순)

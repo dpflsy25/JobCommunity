@@ -12,7 +12,7 @@ const session = require("express-session");
 
 // sequelize 설정 - 동기화 진행
 sequelize
-  .sync({ force: false }) //true면 서버 실행마다 테이블 재생성
+  .sync({ force: true }) //true면 서버 실행마다 테이블 재생성
   .then(() => {
     console.log("데이터베이스 연결 성공");
   })

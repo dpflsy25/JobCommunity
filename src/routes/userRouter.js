@@ -14,4 +14,7 @@ router.post("/", userCtrl.postLogout);
 
 router.patch("/profile", authMiddleware, userCtrl.updateUser);
 router.delete("/", authMiddleware, userCtrl.getUser);
+router.get("/authPage", (req, res) => {
+    res.render("auth")
+})
 module.exports = router;

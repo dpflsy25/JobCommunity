@@ -22,23 +22,25 @@ const User = (Sequelize, DataTypes) => {
         allowNull: false,
       },
       password: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING, 
         allowNull: false,
       },
       newcomer: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      authNum : {
+        type: DataTypes.STRING(20),
+      },
+      authStatus: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       created_at: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
-      // updatedAt: {
-      //   type: DataTypes.DATE,
-      //   allowNull: false,
-      //   defaultValue: DataTypes.NOW,
-      // },
     },
     {
       tableName: "user",

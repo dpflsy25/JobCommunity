@@ -1,0 +1,29 @@
+{
+  "development": {
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3306",
+    "timezone": "Asia/Seoul"
+  },
+  "test": {
+    "username": "root",
+    "password": "dpfls123",
+    "database": "job-community",
+    "host": "svc.sel4.cloudtype.app",
+    "dialect": "mysql",
+    "port": "30925",
+    "timezone": "Asia/Seoul"
+  },
+  "production": {
+    "username": "root",
+    "password": "dpfls123",
+    "database": "job-community",
+    "host": "svc.sel4.cloudtype.app",
+    "dialect": "mysql",
+    "port": "30925",
+    "timezone": "Asia/Seoul"
+  }
+}

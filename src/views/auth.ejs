@@ -13,7 +13,7 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <style>
-    .resgister-btn {
+    .auth-btn {
       width: 112px;
       height: 40px;
       line-height: 40px;
@@ -72,54 +72,50 @@
   <div class="profileform">
     <div class="profile_wrap">
       <form name="edit_info">
-        <h1>회원 가입</h1>
+        <h1>인증번호 입력하기</h1>
         <div>
-          <section class="profile" style="padding:5px 0px 15px;">
-            <form name="register">
-              <div class="profilerow">
-                <label for="username" id="username">이름</label>
-                <input type="text" placeholder="이름을 입력해주세요" style="width: 420px;"/>
-              </div>
-              <div class="profilerow">
-                <label for="password">패스워드</label>
-                <input type="password" placeholder="패스워드를 입력해주세요" style="width: 420px;"/>
-              </div>
-              <div class="profilerow">
-                <label for="email">이메일</label>
-                <input type="text" id="email" placeholder="이메일을 입력해주세요" style="width: 300px;"/>
-                <button type="button" class="resgister-btn" id="send-email-auth" onclick="emailAuth()">인증메일 전송</button>
-              </div>
-              <div class="profilerow">
-                <label for="nickname">닉네임</label>
-                <input type="text" placeholder="닉네임을 입력하세요" style="width: 420px;"/>
-              </div>
-              <div>
-                <div class="profilerows">
-                  <label for="newcomer">경력사항</label>
-                    <input type="checkbox" name="newcome" value="1" onclick="checkOnlyOne(this)" checked />
-                    <label for="newcomer">신입</label>
-                    <input type="checkbox" name="newcome" onclick="checkOnlyOne(this)" value="2" />
-                    <label for="newcomer">경력</label>
+            <p>메일로 전송받은 인증번호를 입력해주세요.</p>
+            <section class="profile" style="padding:5px 0px 15px;">
+                <form name="register">
+                <div class="profilerow">
+                    <label for="authnum" id="authnum">인증번호</label>
+                    <input type="text" placeholder="메일로 받은 인증번호를 입력해주세요" style="width: 420px;"/>
                 </div>
-              </div>
-            </form>
-            <div style="display: flex; justify-content: flex-end;">
-              <button type="button" class="resgister-btn" onclick="signup()">회원가입</button>
-            </div>
-          </section>
+                </form>
+                <div style="display: flex; justify-content: flex-end;">
+                    <button type="button" class="auth-btn" onclick="sendMail()">메일다시받기</button>
+                    <span style="margin-left:15px;"></span>
+                    <button type="button" class="auth-btn" onclick="authNum()">인증하기</button>
+                </div>
+            </section>
       </div>
     </div>
   </section>
 
   <script>
-    function checkOnlyOne(element) {
-    const checkboxes = form.newcome;
+    function sendMail() {
+        var result = confirm("메일을 다시 받으시겠습니까?");
+        axios
+            .post("/users/logout")
+            .then(function (response) {
+              alert("로그아웃 되었습니다.");
+              window.location.reload();
+            })
+            .catch(function (error) {
+              alert("로그아웃 실패" + error);
+              console.log("Logout failed: " + error);
+            });
+    }
 
-    checkboxes.forEach((cb) => {
-      cb.checked = false;
-    });
-
-      element.checked = true;
+    function authNum() {
+        axios
+            .post("/users/logout")
+            .then(function (response) {
+                
+            })
+            .catch(function (error) {
+              console.log("Logout failed: " + error);
+            });
     }
   </script>
 </body> 

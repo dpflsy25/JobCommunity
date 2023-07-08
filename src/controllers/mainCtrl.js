@@ -2,7 +2,8 @@ const db = require("../models");
 const { Op } = require("sequelize");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const secretKey = "jomcommunity-key";
+const config = require(__dirname + "/../config/config.json");
+const secretKey = config.jwtKey;
 
 exports.getMain = async (req, res) => {
   try {
